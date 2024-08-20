@@ -26,7 +26,7 @@ UNSHARE := $(UNSHARE) --uts
 endif
 
 # sudo apt-get install qemu-user-static qemu-utils
-all: packer image
+all: packer 32bit
 
 update_langs:
 	@for lang in pwnagotchi/locale/*/; do\
