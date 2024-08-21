@@ -59,6 +59,7 @@
           - nfs-common
           - triggerhappy
         install:
+          - raspi-utils
           - aircrack-ng
           - autoconf
           - bison
@@ -90,7 +91,7 @@
           - libopenblas-dev # https://stackoverflow.com/questions/14570011/explain-why-numpy-should-not-be-imported-from-source-directory
           - libopenjp2-7
           - libpcap-dev
-          - libraspberrypi-bin
+#          - libraspberrypi-bin
           - libraspberrypi-dev
           - libraspberrypi-doc
           - libraspberrypi0
@@ -126,7 +127,6 @@
       apt:
         name: "{{ packages.apt.install }}"
         state: latest
-        clean: true
         update_cache: true
         install_recommends: false
 
