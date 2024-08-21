@@ -126,7 +126,7 @@
       apt:
         name: "{{ packages.apt.install }}"
         state: latest
-        update_cache: yes
+        update_cache: no
         install_recommends: yes
 
     - name: update pip3, setuptools, wheel
