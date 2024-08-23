@@ -1,5 +1,4 @@
-#import _thread
-import threading
+import _thread
 import logging
 import time
 
@@ -42,8 +41,7 @@ class AsyncAdvertiser(object):
 
     def start_advertising(self):
         if self._config['personality']['advertise']:
-            #_thread.start_new_thread(self._adv_poller, ())
-            threading.Thread(target=self._adv_poller,args=(), name="Grid", daemon=True).start()
+            _thread.start_new_thread(self._adv_poller, ())
 
             grid.set_advertisement_data(self._advertisement)
             grid.advertise(True)

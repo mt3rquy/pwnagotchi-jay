@@ -6,7 +6,6 @@ import logging
 import os
 import threading
 import pwnagotchi.grid
-import prctl
 
 default_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "default")
 loaded = {}
@@ -73,7 +72,6 @@ def toggle_plugin(name, enable=True):
 
 def on(event_name, *args, **kwargs):
     for plugin_name in loaded.keys():
-        
         one(plugin_name, event_name, *args, **kwargs)
 
 
@@ -84,10 +82,7 @@ def locked_cb(lock_name, cb, *args, **kwargs):
         locks[lock_name] = threading.Lock()
 
     with locks[lock_name]:
-        # Setting the thread name using prctl
-        plugin_name, plugin_cb = lock_name.split("::")
-        prctl.set_name(f"{plugin_name}.{plugin_cb}")
-        cb(*args, **kwargs)
+        cb(*args, *kwargs)
 
 
 def one(plugin_name, event_name, *args, **kwargs):
@@ -100,10 +95,8 @@ def one(plugin_name, event_name, *args, **kwargs):
         if callback is not None and callable(callback):
             try:
                 lock_name = "%s::%s" % (plugin_name, cb_name)
-                thread_name = f'{plugin_name}.{cb_name}'
-                thread = threading.Thread(target=locked_cb, args=(lock_name, callback, *args, *kwargs), name=thread_name, daemon=True)
-                thread.start()
-
+                locked_cb_args = (lock_name, callback, *args, *kwargs)
+                _thread.start_new_thread(locked_cb, locked_cb_args)
             except Exception as e:
                 logging.error("error while running %s.%s : %s" % (plugin_name, cb_name, e))
                 logging.error(e, exc_info=True)

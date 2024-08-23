@@ -111,8 +111,7 @@ class AsyncTrainer(object):
         return self._training_epochs
 
     def start_ai(self):
-        #_thread.start_new_thread(self._ai_worker, ())
-        threading.Thread(target=self._ai_worker, args=(), name="AI Worker" daemon=True).start()
+        _thread.start_new_thread(self._ai_worker, ())
 
     def _save_ai(self):
         logging.info("[AI] saving model to %s ..." % self._nn_path)

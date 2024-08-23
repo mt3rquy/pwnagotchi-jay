@@ -1,5 +1,4 @@
-#import _thread
-import threading
+import _thread
 import secrets
 import logging
 import os
@@ -26,9 +25,7 @@ class Server:
             self._origin = self._config['origin']
 
         if self._enabled:
-            #_thread.start_new_thread(self._http_serve, ())
-            logging.info("Starting WebServer thread")
-            self._thread = threading.Thread(target=self._http_serve, name="WebServer", daemon = True).start()
+            _thread.start_new_thread(self._http_serve, ())
 
     def _http_serve(self):
         if self._address is not None:

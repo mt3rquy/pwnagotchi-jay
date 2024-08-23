@@ -77,8 +77,9 @@ main.plugins.onlinehashcrack.email = ""
 main.plugins.onlinehashcrack.dashboard = ""
 main.plugins.onlinehashcrack.single_files = false
 
-main.plugins.pisugar3.enabled = false
-main.plugins.pisugar3.shutdown = 5
+main.plugins.pisugar2.enabled = false
+main.plugins.pisugar2.shutdown = 5
+main.plugins.pisugar2.sync_rtc_on_boot = false
 
 main.plugins.session-stats.enabled = true
 main.plugins.session-stats.save_directory = "/var/tmp/pwnagotchi/sessions/"
@@ -112,7 +113,6 @@ main.mon_max_blind_epochs = 50
 main.no_restart = false
 
 main.log.path = "/etc/pwnagotchi/log/pwnagotchi.log"
-main.log.path-debug = "/etc/pwnagotchi/log/pwnagotchi-debug.log"
 main.log.rotation.enabled = true
 main.log.rotation.size = "10M"
 
@@ -150,8 +150,10 @@ personality.bond_encounters_factor = 20000
 personality.throttle_a = 0.4
 personality.throttle_d = 0.9
 
+personality.clear_on_exit = true # clear display when shutting down cleanly
+
 ui.invert = false # false = black background, true = white background
-ui.cursor = true
+
 ui.fps = 0.0
 ui.font.name = "DejaVuSansMono" # for japanese: fonts-japanese-gothic
 ui.font.size_offset = 0 # will be added to the font size
