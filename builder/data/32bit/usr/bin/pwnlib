@@ -24,6 +24,7 @@ reload_brcm() {
 
 # starts mon0
 start_monitor_interface() {
+  systemctl stop wpa_supplicant.service
   rfkill unblock all
   ifconfig wlan0 up
   iw dev wlan0 set power_save off
@@ -39,6 +40,7 @@ stop_monitor_interface() {
   ifconfig wlan0mon down && iw dev wlan0mon del
   reload_brcm
   ifconfig wlan0 up
+  systemctl start wpa_supplicant.service
 }
 
 # returns 0 if the specificed network interface is up
