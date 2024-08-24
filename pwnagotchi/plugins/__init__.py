@@ -1,4 +1,4 @@
-import _thread
+# import _thread
 import glob
 import importlib
 import importlib.util
@@ -95,8 +95,10 @@ def one(plugin_name, event_name, *args, **kwargs):
         if callback is not None and callable(callback):
             try:
                 lock_name = "%s::%s" % (plugin_name, cb_name)
-                locked_cb_args = (lock_name, callback, *args, *kwargs)
-                _thread.start_new_thread(locked_cb, locked_cb_args)
+                # locked_cb_args = (lock_name, callback, *args, *kwargs)
+                # _thread.start_new_thread(locked_cb, locked_cb_args)
+                thread_name = f'{plugin_name}.{cb_name}'
+                threading.Thread(target=locked_cb, args=(lock_name, callback, *args, *kwargs), name=thread_name, daemon=True).start()
             except Exception as e:
                 logging.error("error while running %s.%s : %s" % (plugin_name, cb_name, e))
                 logging.error(e, exc_info=True)
