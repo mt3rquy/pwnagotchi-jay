@@ -65,6 +65,12 @@ build {
     ]
   }
   provisioner "file" {
+    destination = "/var/lib/NetworkManager/"
+    sources     = [
+      "data/32bit/var/lib/NetworkManager/NetworkManager.state",
+    ]
+  }
+  provisioner "file" {
     destination = "/etc/update-motd.d/01-motd"
     source      = "data/32bit/etc/update-motd.d/01-motd"
   }

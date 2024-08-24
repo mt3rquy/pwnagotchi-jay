@@ -137,10 +137,10 @@
         update_cache: true
         install_recommends: false
 
-    - name: turn off wireless interface
-      shell: "nmcli radio wifi off"
-      args:
-        executable: /bin/bash
+    # - name: turn off wireless interface
+    #   shell: "nmcli radio wifi off"
+    #   args:
+    #     executable: /bin/bash
 
     - name: update pip3, setuptools, wheel
       shell: "python3 -m pip install --upgrade pip setuptools wheel --break-system-packages"
