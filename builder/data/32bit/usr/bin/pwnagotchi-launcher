@@ -11,7 +11,7 @@ fi
 
 if is_auto_mode; then
   /usr/local/bin/pwnagotchi
-  # systemctl restart bettercap
+  systemctl restart bettercap
 else
   /usr/local/bin/pwnagotchi --manual
 fi

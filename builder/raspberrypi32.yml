@@ -51,7 +51,7 @@
           - libpcap0.8_1.9.1-4_armhf.deb
         hold:
           - firmware-atheros
-          # - firmware-brcm80211
+          - firmware-brcm80211
           - firmware-libertas
           - firmware-misc-nonfree
           - firmware-realtek
@@ -74,7 +74,7 @@
           - dphys-swapfile
           - fbi
           - firmware-atheros
-          # - firmware-brcm80211
+          - firmware-brcm80211
           - firmware-libertas
           - firmware-misc-nonfree
           - firmware-realtek
