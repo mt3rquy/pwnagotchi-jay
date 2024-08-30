@@ -1,9 +1,6 @@
 name: Publish
 
 on:
-  push:
-    branches:
-      - devq
   workflow_dispatch:
     inputs:
       version:
